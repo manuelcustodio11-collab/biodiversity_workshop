@@ -1,6 +1,6 @@
-# Caribbean trainings page template
+# Regional Biodiversity page template
 
-This repository is a template to set up a website on [`github-pages`](https://pages.github.com/) that hosts all the content (step-by-step instructions, slides, code, recordings, photos, etc) for training workshops.
+This repository is a template to set up a website on [`github-pages`](https://pages.github.com/) that hosts all the content (step-by-step instructions, slides, code, ) for training workshops.
 
 :construction: Under Construction :construction:
 
