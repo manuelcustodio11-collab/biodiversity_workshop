@@ -10,7 +10,6 @@ Calcular dos indicadores de conservación dentro de un área de interés (AOI):
 1. El porcentaje del territorio bajo alguna figura de protección (indicador vinculado a la Meta 3 — "30x30" — del Marco Mundial de Biodiversidad Kunming-Montreal).
 2. La representatividad ecológica por ecorregión, para identificar vacíos de conservación.
 
-
 ## Datos
 - WCMC/WDPA/current/polygons — Base de Datos Mundial de Áreas Protegidas (WDPA).
 Collection: ee.FeatureCollection("WCMC/WDPA/current/polygons") 
