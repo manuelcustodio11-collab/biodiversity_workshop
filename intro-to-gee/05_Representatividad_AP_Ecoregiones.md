@@ -8,7 +8,6 @@ nav_order: 3
 ## 05_Representatividad_AP_Ecoregiones
 
 # Objetivos
-
 Calcular dos indicadores de conservación dentro de un área de interés (AOI):
 
 1. El porcentaje del territorio bajo alguna figura de protección (indicador vinculado a la Meta 3 — "30x30" — del Marco Mundial de Biodiversidad Kunming-Montreal).
