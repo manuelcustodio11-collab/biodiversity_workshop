@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 # Introduction
-Welcome to an Introduction to GIS with QGIS! This workshop will give an overview of general foundations of QGIS, an open-source GIS software for vector and raster analysis. To start off, this section will cover a number of fundamental GIS concepts, provide a snapshot of key geoprocessing tools, and point out high-quality geospatial data to be aware of and how to access it throughout the next few modules. 
+Welcome to an Introduction to GIS with QGIS! This workshop will give an overview of general foundations of QGIS, an open-source GIS software for vector and raster analysis. To start off, this section will cover a number of fundamental GIS concepts, provide a snapshot of key geoprocessing tools, and point out high-quality geospatial data to be aware of and how to access it throughout the next few modules. cc 
 
 ## Set-up
 1. [Install](https://www.qgis.org/en/site/forusers/download.html) QGIS if not already installed.
