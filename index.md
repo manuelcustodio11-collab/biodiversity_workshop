@@ -4,8 +4,10 @@ title: Overview
 nav_order: 1
 ---
 
-# COUNTRY NAME Geospatial Capacity Building Workshops
-These workshops aim to build participants' capacity to use geospatial technologies for mangrove and hydrological event management. For a detailed overview, you can read the workshop's [concept note](https://docs.google.com/document/d/1N3lmDg1uZoC4VQdsRQyvUtch2jIqBJpM_BBgyg_aUqE/edit?usp=sharing). By the end of this training series, participants will gain:
+# REGIONAL BIODIVERSITY WORKSHOP
+Este taller responde a las necesidades expresadas para el análisis de datos de biodiversidad que respondan a los targets de biodiversidad GBF 1,2,3,4, y 11. Reúne a especialistas en teledetección de seis países para aprender, practicar y adaptar un conjunto de herramientas gratuitas basadas en la nube que apoyan directamente la implementación de GBF: scripts de Google Earth Engine (GEE) para el mapeo de ecosistemas y el monitoreo de la biodiversidad, y el flujo de trabajo de evaluación de la Lista Roja de Ecosistemas (LRE). 
+Estos scripts están elaborados para el manejo de datos de biodiversidad en GEE, que ayuden a responder a estos indicadores de biodiversidad. Para mayor detalle del taller, ver agenda 
+ [concept note](https://docs.google.com/document/d/15cd3aL7H8xDesuFM8Rh58KXx0UI68o5x/edit?usp=sharing&ouid=102108997537890089824&rtpof=true&sd=true). By the end of this training series, participants will gain:
 1. A conceptual understanding of geographic information systems and use of QGIS;
 2. Knowledge of the use and interpretation of moderate and high resolution satellite imagery and synthetic aperture radar data;
 3. An overview of the Google Earth Engine platform;
@@ -34,12 +36,4 @@ This table is just an example. Actual 12-day overview will differ based on the c
 | 10-11           | Change Detection (Flood or Mangroves)               | June 2023      | Virtual   |
 | 12              | Capstone and Follow-up Support                      | September 2023 | Virtual   |
 
-## Feedback
-If you have any feedback from any of the workshops, please fill out the form below. It helps us improve future workshops!
 
-[Give Feedback](https://forms.gle/8Jdm1aybL9sqzNEw6){: .btn .btn-purple }
-
-## Workshop Recordings
-The recordings for each workshop session can be access by clicking the button below. Please do not remove any files from the folder.
-
-[View Recordings](linkhere){: .btn .btn-purple }
