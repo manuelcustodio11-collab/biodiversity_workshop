@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 05_Representatividad_AP_Ecoregiones
-parent: intro-to-gee
+parent: /intro-to-gee
 nav_order: 1
 ---
 

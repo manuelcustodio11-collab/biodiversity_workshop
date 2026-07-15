@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Introduction to GEE"
+title: "Introducción a GEE"
 permalink: /intro-to-gee
 has_children: true
 nav_order: 2
@@ -8,7 +8,7 @@ nav_order: 2
 
 
 
-# Introduction to GEE
+# Introducción a GEE
 Navegar en la interfaz de Google Earth Engine (GEE), explorar conjuntos de datos globales disponibles en el Data Catalog, recortar esos conjuntos de datos para un área de interés (ROI) de su país, analizar el riesgo del ecosistema y calcular una serie de indicadores de biodiversidad.
 
 ## Set-up
