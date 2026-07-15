@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Introduction to Remote Sensing"
-permalink: /intro-to-remote-sensing
+title: "Ecosystem change"
+permalink: /ecosystem-change
 has_children: True
 nav_order: 3
 ---

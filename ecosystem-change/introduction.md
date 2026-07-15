@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Introduction
-parent: Introduction to Remote Sensing
+parent: Ecosystem change
 nav_order: 1
 ---
 
