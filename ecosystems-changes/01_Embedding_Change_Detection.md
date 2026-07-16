@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 06_Stock_Perdida_Carbono
-parent: "Introducción a GEE"
+title: 01_Embedding_Change_Detection
+parent: "Introducción a Embedding"
 nav_order: 7
 ---
 # 06_Stock_Perdida_Carbono

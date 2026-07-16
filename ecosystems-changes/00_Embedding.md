@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 05_Representatividad_AP_Ecoregiones
-parent: "Introducción a GEE"
+title: 00_Embedding
+parent: "Introducción a Embedding"
 nav_order: 6
 ---
 
