@@ -2,7 +2,7 @@
 layout: page
 title: 03_Composición_Sentinel2
 parent: "Introducción a GEE"
-nav_order: 3
+nav_order: 4
 ---
 
 # Spatial Analysis

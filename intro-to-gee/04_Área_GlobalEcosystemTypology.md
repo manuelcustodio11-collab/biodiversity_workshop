@@ -2,7 +2,7 @@
 layout: page
 title: 04_Área_GlobalEcosystemTypology
 parent: "Introducción a GEE"
-nav_order: 4
+nav_order: 5
 ---
 
 # Making a Map with Vector Data

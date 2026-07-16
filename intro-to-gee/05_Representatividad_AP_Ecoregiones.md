@@ -2,7 +2,7 @@
 layout: page
 title: 05_Representatividad_AP_Ecoregiones
 parent: "Introducción a GEE"
-nav_order: 5
+nav_order: 6
 ---
 
 ## 05_Representatividad_AP_Ecoregiones

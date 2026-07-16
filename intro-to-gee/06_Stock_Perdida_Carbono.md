@@ -2,7 +2,7 @@
 layout: page
 title: 06_Stock_Perdida_Carbono
 parent: "Introducción a GEE"
-nav_order: 6
+nav_order: 7
 ---
 # 06_Stock_Perdida_Carbono
 

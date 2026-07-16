@@ -1,8 +1,8 @@
 ---
 layout: page
-title: 04_Área_GlobalEcosystemTypology
+title: 02_Filtrar_imágenes_Landsat
 parent: "Introducción a GEE"
-nav_order: 4
+nav_order: 3
 ---
 
 # Making a Map with Vector Data
