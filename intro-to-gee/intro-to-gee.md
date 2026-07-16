@@ -24,9 +24,11 @@ Google Earth Engine combina un catálogo de varios petabytes de imágenes sateli
 
 La infraestructura de procesamiento paraleliza automáticamente el análisis en muchos procesadores en muchas computadoras en los centros de datos de Google. Eso resulta en reducción de los tiempos de procesamiento en órdenes de magnitud mediante el uso de potencia informática distribuida y basada en la nube. Además los datos están todos centralizados en la nube.
 
+<img align="center" src="../images/intro-gee/fig1.png" vspace="10" width="600">
+
 # Conjunto de datos
 El archivo de datos públicos de Earth Engine incluye más de cuarenta años de imágenes históricas y conjuntos de datos científicos, actualizados y ampliados diariamente.
-
+<img align="center" src="../images/intro-gee/fig2.png" vspace="10" width="600">
 - Más de 800 conjuntos de datos públicos
 - Más de 70 petabytes de datos
 - Más de 100 conjuntos de datos agregados anualmente
@@ -42,6 +44,7 @@ Tipos de datos:
 Para explorar todos los conjuntos de datos:
 https://developers.google.com/earth-engine/datasets
 https://developers.google.com/earth-engine/datasets/catalog
+<img align="center" src="../images/intro-gee/fig3.png" vspace="10" width="600">
 
 ## Interfaz
 
