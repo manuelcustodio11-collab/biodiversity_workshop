@@ -1,4 +1,4 @@
-# Regional Biodiversity page template
+# Regional Biodiversity Workshop
 
 This repository is a template to set up a website on [`github-pages`](https://pages.github.com/) that hosts all the content (step-by-step instructions, slides, code, ) for training workshops.
 
@@ -18,14 +18,14 @@ repository (caribbean-trainings)
 ├── _includes
 │   ├── head_custom.html
 │   ├── head.html
-├── lesson1/day1 ("intro-to-gis")
-│   ├── lesson1/day1.md ("intro-to-gis.md")
+├── lesson1/day1 ("intro-to-gee")
+│   ├── lesson1/day1.md ("intro-to-gee.md")
 │   ├── introduction.md
 │   ├── topic1.md
 │   ├── topic2.md
 │   ├── .....
-├── lesson2/day2 ("intro-to-remote-sensing")
-│   ├── lesson1/day1.md ("intro-to-remote-sensing.md")
+├── lesson2/day2 ("ecosystem-change")
+│   ├── lesson1/day1.md ("ecosystem-change.md")
 │   ├── introduction.md
 │   ├── topic1.md
 │   ├── topic2.md
@@ -39,7 +39,7 @@ repository (caribbean-trainings)
 │   │   ├── .....
 ├── partners
 ├── resources
-└── photos
+
 ```
 
 github desktop and external editor
