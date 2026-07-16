@@ -1,9 +1,31 @@
 ---
 layout: page
-title: 04_Área_GlobalEcosystemTypology
+title: 01_Visualización_imágen
 parent: "Introducción a GEE"
 nav_order: 4
 ---
+
+# 01_Visualización_imágen
+
+### Cargar conjunto de datos del Earth Catalog
+En este ejercicio vamos a `importar` el modelo de elevación de 30 m de NASA SRTM. El [Data Catalog](https://developers.google.com/earth-engine/datasets) de Earth Engine es un repositorio público con cientos de conjuntos de datos geoespaciales listos para usar (imágenes satelitales, modelos de elevación, cobertura terrestre, clima, entre otros). Cada dataset tiene una página propia con su descripción, resolución, fechas disponibles, bandas, y — lo más importante — su **ID único**, que es lo que necesitamos para cargarlo en nuestro código.
+
+Para encontrar el dataset SRTM, puede buscar "SRTM" directamente en la barra de búsqueda de la parte superior del Code Editor. Al hacer clic en el resultado, se abre una ventana con la documentación del dataset, incluyendo un botón `Import` que agrega automáticamente la imagen a su script como una variable.
+
+Sin embargo, en este curso vamos a importar el dataset directamente escribiendo el código, en lugar de usar el botón `Import`. Esto nos da más control sobre el nombre de la variable y hace que el script sea más fácil de leer y compartir. Para esto, copiamos el ID del dataset que aparece en la página del catálogo (`USGS/SRTMGL1_003`) y lo usamos dentro de la función `ee.Image()`, tal como vimos anteriormente:
+
+```javascript
+var elevacion = ee.Image("USGS/SRTMGL1_003");
+```
+
+
+
+
+
+
+
+
+
 
 # Making a Map with Vector Data
 In this module, you will create a basic map which will be used later as a basis for further demonstrations of QGIS functionality.
