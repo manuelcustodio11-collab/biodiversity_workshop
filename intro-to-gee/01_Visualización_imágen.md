@@ -6,11 +6,19 @@ nav_order: 2
 ---
 
 # 01_Visualización_imágen
-
 ## Objectivos
 1. Importar imágen desde el catalogo de datos
 2. Visualizar en el mapa
 3. Clasificar valores continuos
+
+## Datos
+- SRTM , collection: `ee.Image("USGS/SRTMGL1_003")`
+
+## Método
+- Emplear función `.where()`
+- Uso de operadores de comparación `.gt()` (greater than, "mayor que"), `.lt()` (menor que), o `.eq()` (igual a).
+
+## Paso a paso
 
 ### Paso 1: Cargar conjunto de datos del Earth Catalog
 En este ejercicio vamos a `importar` el modelo de elevación de 30 m de NASA SRTM. El [Data Catalog](https://developers.google.com/earth-engine/datasets) de Earth Engine es un repositorio público con cientos de conjuntos de datos geoespaciales listos para usar (imágenes satelitales, modelos de elevación, cobertura terrestre, clima, entre otros). Cada dataset tiene una página propia con su descripción, resolución, fechas disponibles, bandas, y — lo más importante — su **ID único**, que es lo que necesitamos para cargarlo en nuestro código.
