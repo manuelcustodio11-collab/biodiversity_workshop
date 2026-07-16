@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Introducción a ABG Biomass"
-permalink: /abg_biomass
+permalink: /abg-biomass
 has_children: true
 nav_order: 2
 ---
