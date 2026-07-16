@@ -28,6 +28,7 @@ Estos scripts están elaborados para el manejo de datos de biodiversidad en GEE,
 
 
 ## Cómo los ejercicios prácticos apoyan los objetivos y los indicadores de biodiversidad del GBF
+
 | Objective | Day | Dataset | Output | GBF Target | Indicator |
 |---|---|---|---|---|---|
 | Ecosystem risk | 1 | UMD/hansen/global_forest_change_2024_v1_12 | Forest loss and gain map | 2, 4, 8 | Forest extent change, ecosystem degradation monitoring, restoration assessment |
