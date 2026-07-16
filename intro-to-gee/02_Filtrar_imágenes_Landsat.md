@@ -13,8 +13,13 @@ nav_order: 3
 
 ## Datos
 - Límites administrativos, nivel pais (level0) FAO, collection: `FAO/GAUL/2015/level0`
+<p align="center">
+  <img src="images/intro-gee/fig11.png" width="600" style="margin: 10px 0;">
+</p>
 - Imágenes Landsat8 Collection 2, Nivel 2, collection: `LANDSAT/LC08/C02/T1_L2`
-
+<p align="center">
+  <img src="images/intro-gee/fig9.png" width="600" style="margin: 10px 0;">
+</p>
 ## Método
 - Emplear función `.where()`
 - Uso de operadores de comparación `.gt()` (greater than, "mayor que"), `.lt()` (menor que), o `.eq()` (igual a).
@@ -85,6 +90,9 @@ Map.addLayer(resultado, {min: 7230, max: 15000}, 'Cortado');
 ```
 
 > **Nota técnica:** Los valores `min` y `max` (7230–15000) ajustan el contraste de visualización según el rango de reflectancia de superficie (`SR`) característico del producto Collection 2, Nivel 2 de Landsat 8. Para conocer los nombres de las bandas de la colección observar en el Data Catalog -> BANDS. 
+<p align="center">
+  <img src="images/intro-gee/fig10.png" width="600" style="margin: 10px 0;">
+</p>
 
 
 ### Paso 4: Filtrar imágenes por porcentaje de cobertura de nubes
@@ -117,8 +125,8 @@ Use el panel `Layers` del mapa para alternar la visibilidad entre las capas `Cor
 
 **Actividad sugerida:**
 
-- Revise la cantidad de imágenes devueltas al filtrar con `lt` (menor que), así como los metadatos (`properties`) de algunas imágenes individuales dentro de la colección.
-- Cambie el filtro de `ee.Filter.lt()` a `ee.Filter.gt()` (mayor que) y observe cómo cambia la composición resultante al conservar únicamente las imágenes con **más** del 20% de cobertura de nubes.
+- Revisar la cantidad de imágenes devueltas al filtrar con `lt` (menor que), así como los metadatos (`properties`) de algunas imágenes individuales dentro de la colección.
+- Cambiar el filtro de `ee.Filter.lt()` a `ee.Filter.gt()` (mayor que) y observe cómo cambia la composición resultante al conservar únicamente las imágenes con **más** del 20% de cobertura de nubes.
 
 ### Código completo
 Script "`02_Filtrar_imágenes_Landsat`" del repositorio y la carpeta `day_1` o link directo:
