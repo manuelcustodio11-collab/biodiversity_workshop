@@ -18,22 +18,12 @@ Navegar en la interfaz de Google Earth Engine (GEE), explorar conjuntos de datos
 ## Datos a emplear
 1. Imágenes Landsat-8, Sentinel-2
 2. Linea base para análisis de riesgo de ecosistemas:
-- Ecosystem typology, source: IUCN (Level 3) - Global
-- Pérdida y ganancia de bosque: Hansen - Global
-- Aboveground Biomass - Global
-- Ecosistemas
-
+- Tipología de ecosistemas, fuente: IUCN (Level 3) - Global
+- Pérdida y ganancia de bosque , fuente: Hansen - Global
+- Aboveground Biomass, fuente:- Global
+- Ecoregiones, fuente: Global
 
 ## Repositorio GEE
-https://code.earthengine.google.com/?accept_repo=users/paulapaz1101/biodiversity_workshop 
-
-## Scripts
-00_Básico_JavaScript //
-01_Visualización_imágen// 
-02_Filtrar_imágenes_Landsat//
-03_Composición_Sentinel2//
-04_Área_GlobalEcosystemTypology
-05_Representatividad_AP_Ecoregiones
-06_Stock_Perdida_Carbono
+[https://code.earthengine.google.com/?accept_repo=users/paulapaz1101/biodiversity_workshop](https://code.earthengine.google.com/?accept_repo=users/paulapaz1101/biodiversity_workshop)
 
 
