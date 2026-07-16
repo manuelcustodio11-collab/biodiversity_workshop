@@ -30,10 +30,10 @@ Estos scripts están elaborados para el manejo de datos de biodiversidad en GEE,
 ## Cómo los ejercicios prácticos apoyan los objetivos y los indicadores de biodiversidad del GBF
 | Objective | Day | Dataset | Output | GBF Target | Indicator |
 |---|---|---|---|---|---|
-| Ecosystem risk | 1 | `UMD/hansen/global_forest_change_2024_v1_12` | Forest loss and gain map | 2, 4, 8 | Forest extent change, ecosystem degradation monitoring, restoration assessment |
-| | 1 | `ESA/WorldCover/v200` | Land-cover map | 1, 2, 3, 14 | Land-cover composition, ecosystem extent, land-cover transitions |
-| | 1 | — | Ecosystem type map | 1, 2, 3, 4, 8 | Spatial planning and identification of ecosystem types. Ecosystem restoration and monitoring changes in ecosystem extent. Identification of ecosystems for conservation ("30×30"). |
+| **Ecosystem risk** | 1 | UMD/hansen/global_forest_change_2024_v1_12 | Forest loss and gain map | 2, 4, 8 | Forest extent change, ecosystem degradation monitoring, restoration assessment |
+| | 1 | ESA/WorldCover/v200 | Land-cover map | 1, 2, 3, 14 | Land-cover composition, ecosystem extent, land-cover transitions |
+| | 1 | — | Ecosystem type map | 1, 2, 3, 4, 8 | Spatial planning and identification of ecosystem types; ecosystem restoration and monitoring changes in ecosystem extent; identification of ecosystems for conservation ("30×30") |
 | | 2 | — | Ecosystem change map | 2, 8 | Ecosystem change detection, degradation and restoration monitoring |
-| Species distribution | 1 | Topographic predictors | Habitat suitability / Species distribution map | 1, 3, 4, 12 | Species distribution, Extent of Occurrence (EOO), Area of Occupancy (AOO), Red List assessments, Key Biodiversity Areas (KBAs), conservation planning |
-| | 1 | Climate predictors | Habitat suitability / Species distribution map | 4 | *(mismo indicador que la fila anterior)* |
-| Estimate Aboveground Biomass | 4 | — | Aboveground biomass and carbon stock map | 2, 8, 11 | Ecosystem condition, carbon stocks, restoration monitoring, ecosystem resilience, nature-based climate solutions |
+| **Species distribution** | 1 | Topographic predictors | Habitat suitability / Species distribution map | 1, 3, 4, 12 | Species distribution, Extent of Occurrence (EOO), Area of Occupancy (AOO), Red List assessments, Key Biodiversity Areas (KBAs), conservation planning |
+| | 1 | Climate predictors | Habitat suitability / Species distribution map | 4 | Species distribution, habitat suitability |
+| **Estimate Aboveground Biomass** | 4 | — | Aboveground biomass and carbon stock map | 2, 8, 11 | Ecosystem condition, carbon stocks, restoration monitoring, ecosystem resilience, nature-based climate solutions |
