@@ -117,7 +117,7 @@ var resultado = cortadoNubes.select('SR_B4', 'SR_B3', 'SR_B2');
 Map.addLayer(resultado, {min: 7230, max: 15000}, 'Cortado con filtro de nubes');
 ```
 
-**Paso 10: Comparar resultados**
+**Comparar resultados**
 
 Use el panel `Layers` del mapa para alternar la visibilidad entre las capas `Cortado` y `Cortado con filtro de nubes`, y observe si el filtro de nubes mejora o no la calidad visual de la composición.
 
