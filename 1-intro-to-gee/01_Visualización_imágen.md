@@ -25,7 +25,7 @@ En este ejercicio vamos a `importar` el modelo de elevación de 30 m de NASA SRT
 
 Para encontrar el dataset SRTM, puede buscar "SRTM" directamente en la barra de búsqueda de la parte superior del Code Editor. Al hacer clic en el resultado, se abre una ventana con la documentación del dataset, incluyendo un botón `Import` que agrega automáticamente la imagen a su script como una variable.
 <p align="center">
-  <img src="{{ '/images/intro-gee/fig8.png' | relative_url }}" width="600" style="margin: 10px 0;">
+  <img src="{{ '/images/intro-gee/fig8.png' | relative_url }}" width="400" style="margin: 10px 0;">
 </p>
 
 También podemos importar el dataset directamente escribiendo el código, en lugar de usar el botón `Import`. Esto nos da más control sobre el nombre de la variable y hace que el script sea más fácil de leer y compartir. Para esto, copiamos el ID del dataset que aparece en la página del catálogo (`USGS/SRTMGL1_003`) y lo usamos dentro de la función `ee.Image()`:
