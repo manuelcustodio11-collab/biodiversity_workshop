@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "1-Introducción a GEE"
-permalink: /intro-to-gee
+title: "Introducción a Embedding"
+permalink: /2-ecosystems-changes
 has_children: true
 nav_order: 2
 ---
@@ -14,9 +14,8 @@ nav_order: 2
 Navegar en la interfaz de Google Earth Engine (GEE), explorar conjuntos de datos globales disponibles en el Data Catalog, recortar esos conjuntos de datos para un área de interés (ROI) de su país, analizar el riesgo del ecosistema y calcular una serie de indicadores de biodiversidad.
 
 ## Set-up
-1. [Instrucciones rápidas para iniciar en GEE](https://developers.google.com/earth-engine/guides/quickstart_javascript?hl=es-419) Un proyecto de Google Cloud registrado para Earth Engine.
-2. [Instrucciones para registrarse en Google Cloud Platform y GEE] (https://docs.google.com/document/d/1n40y1vcDQVspXZODvGuCDtBnykudkURDvh-tPmvXLKs/edit?tab=t.si25om8ipoh9)
-3. [Libro GEE](https://www.eefabook.org/) Teledetección Basada en la Nube con Google Earth Engine: Fundamentos y Aplicaciones".
+1. [Instrucciones rápidas para iniciar en GEE](https://developers.google.com/earth-engine/guides/quickstart_javascript?hl=es-419) Un proyecto de Google Cloud registrado para Earth Engine:.
+2. [Libro GEE](https://www.eefabook.org/) Teledetección Basada en la Nube con Google Earth Engine: Fundamentos y Aplicaciones".
 
 # Qué es Google Earth Engine?
 “Una plataforma de escala planetária para datos y análisis geoespaciales”.

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "2-Introducción a Embedding"
-permalink: /ecosystems-changes
+title: "Introducción a ABG Biomass"
+permalink: /3-abg-biomass
 has_children: true
 nav_order: 2
 ---
