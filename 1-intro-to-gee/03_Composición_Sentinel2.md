@@ -5,83 +5,201 @@ parent: "Introducción a GEE"
 nav_order: 4
 ---
 
-# Spatial Analysis
+# 03_Composición_Sentinel2
+## Objetivo
+1. Definir un área de interés usando límites administrativos (FAO GAUL).
+2. Filtrar, enmascarar nubes y calcular índices espectrales sobre una colección Sentinel-2.
+3. Generar distintos tipos de composición (mediana, mosaico de calidad) y exportarlos.
 
-QGIS offers a multitude of geoprocessing tools that allow you to manipulate vector and raster data. Elements such as `Buffer`, `Clip`, `Dissolve`, or `Intersection` allow you to create zones surrounding a border, cut the layer by a particular boundary, dissolve a specific inner geographical area, or obtain a common area between two or more layers, respectively. These tools give us a way to extract more insightful analyses from geospatial data.
+## Datos
+- Límites administrativos, nivel pais (level0) FAO, collection: `FAO/GAUL/2015/level0`
+<p align="center">
+  <img src="images/intro-gee/fig11.png" width="600" style="margin: 10px 0;">
+</p>
+- Imágenes Sentinel-2, Nivel 2A (reflectancia de superficie), collection: `COPERNICUS/S2_SR`
+<p align="center">
+  <img src="images/intro-gee/fig9.png" width="600" style="margin: 10px 0;">
+</p>
 
-## Objectives
-1. Learn how to use the buffering tool in QGIS.
-2. Use the zonal statistics tool to calculate the total population within a particular region.
+## Método
+- Enmascaramiento de nubes mediante la banda de calidad `QA60` y operadores de bits (`bitwiseAnd`).
+- Cálculo de índices espectrales normalizados con `normalizedDifference()`.
+- Aplicación de funciones a toda una colección mediante `.map()`.
+- Composición de la serie temporal con `.median()` y `.qualityMosaic()`.
+- Exportación de resultados a Google Drive y como GEE Asset.
 
-## Buffering
-The `Buffering` tool is one of the most commonly used geoprocessing tools. Practically speaking, it allows you to define two areas: a region that falls within the specified distance, and a region that falls outside of the specified distance. The *buffer zone* is the region that falls within the defined distance. When you establish a buffer, it is important that you check what type of units your data uses. The type of units is defined by the data’s projection. You can check the projection by right-clicking on the layer and going to `Properties > Information` and scroll down to the `Coordinate Reference System (CRS)` section. 
+## Paso a paso
 
-The buffer zone does not have to be defined by a single number – it can vary based on the values defined in a specific Attribute Table column. Furthermore, you can define multiple buffers for a single object, as well as buffers with overlapping or dissolving boundaries.
+### Paso 1: Definir el área de interés
+Importar la colección de límites administrativos a nivel país y filtrarla con `ee.Filter.eq()` para obtener el feature de Colombia.
 
-[IMAGE buffer w variation, multiple buffers, dissolved vs overlapping buffers]
+```javascript
+var limites = ee.FeatureCollection('FAO/GAUL/2015/level0');
+var area = limites.filter(
+  ee.Filter.eq('ADM0_NAME', 'Colombia')
+);
+```
 
-### Exercise 3.1. Delineate historical flood risk extent.
-We will visualize flood risk zones by establishing a buffer around the major waterways in Puerto Rico based on historical flood extents.
+### Centrar el mapa y visualizar el área
 
-1. Open the `pr-elev-analysis` project.
-2. Ensure that the following layers are loaded into the project:
-    1. For analysis: `pr-rivers-corrected-reproj`
-    2. For visualization: `PRI_adm0`, `pr-elev-clipped`, `pr-hillshade`.
-3. Uncheck any other layers so they are not visible to keep things organized.
-4. Double-check that all the layers and the map project are set to the CRS `EPSG:32630` setting (this is important so that we have a projection that uses `meters` as its distance metric). If they are not, you will need to change the CRS:
-    1. Navigate to `Processing > Toolbox` and search for `Reproject Layer`. Choose an input vector layer that needs to be changed, and set `EPSG:32630 - WGS 84 / UTM zone 20N` as the `Target CRS`. For raster layers, you will need to use `Rasters > Projections > Warp (reproject)...`.
-    2. Choose to save the file as `LAYER-NAME-HERE-reproj` in the `intro-gis-data/analysis` folder.
-    3. Press `Run` and then close the window. Save the project.
-    4. Repeat steps 1-3 for any other vector layers that need to be reprojected. 
-    5. To change the map canvas projection, click on the lower right corner where it says the current projection (most likely `EPSG:4326`). Choose `WGS 84 / UTM zone 20N` and choose `OK`.
-    6. Remove any layers in the wrong projection from the map and and adjust the symbology as needed.
-5. Navigate to `Processing > Toolbox` and use the search bar to locate the `Tapered buffers` tool listed under the `Vector Geometry` category.
-6. Rivers do not flood uniformly. Thus, instead of defining a fixed value to establish the buffer zone, we will use a buffer that gradually increases from the start of the line segment to the end of the line segment such that a greater flood extent is defined at lower elevations. The rivers in the `pr-rivers-reproj.gpkg` file have already been configured so that their start point is at a higher elevation and their end point at a lower elevation. 
-7. Define the “Tapered buffers” parameters. 
-    1. **Input layer:** `pr-rivers-reproj`
-    2. **Start width:** `0.00`
-    3. **End width:** `3200.00`
-    4. **Segments:** Select the dropdown menu button. Hover over the `Field type: int, double, string` option and select `maxelev`. This choice will create a more gradual looking buffer.
-8. Leave the default option to save the layer as a temporary layer as press `Run`, close the window, and save the project.
+```javascript
+Map.centerObject(area, 9);
+Map.addLayer(area, {}, 'Área de Interés', false);
+```
 
-You should see a new layer called `Buffered` appear on the canvas. You may notice that it looks a little messy – a number of the rivers have overlapping buffer zones. Let’s dissolve the overlapping borders to create a cleaner flood extent boundary. 
+### Paso 2: Cargar y filtrar la colección Sentinel-2
 
-### Exercise 3.2. Dissolve buffer boundaries.
-1. Navigate to `Vector > Geoprocessing Tools > Dissolve...`
-2. Select `Buffered` as the input layer.
-3. Next to the `Dissolved` field, select the `...` button and save the file as `pr-flood-extent` in the `intro-gis-data/analysis` folder. 
-4. Press `Run` and then close the window. Save the project.
+Cargar `COPERNICUS/S2_SR_HARMONIZED` y filtrarla por ubicación (`.filterBounds()`), fecha (`.filterDate()`) y porcentaje de nubes (`ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20)`).
 
-Now you have a layer that indicates the possible flooding extent from rivers in Puerto Rico. Obviously this layer is a very rough flooding estimate, but it will serve our purposes for the remainder of the lesson.
+```javascript
+var s2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED');
 
-## Zonal Statistics
-More than just visualizing data, geospatial analysis requires the ability to gain numerical insights from the data to better understand patterns and trends occurring within the study region and time period. A helpful tool for conducting this type of analysis is the Zonal Statistics tool. This process allows you to calculate the mean, median, sum, minimum, maximum, or range of a particular feature within a specified boundary. The tool is applied to raster data, but the boundary can be specified with vector or raster data. 
+var s2filtrado = s2.filterBounds(area)
+                   .filterDate('2025-01-01', '2026-01-01')
+                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20));
 
-[IMAGE zonal stats visualization]
+print('Número de imágenes filtradas', s2filtrado.size());
+```
 
-### Exercise 3.3. Calculate total population at risk of flooding.
-For our next exercise, we will use the population layer to determine the number of people within the country that fall within the potential flood zone, putting them at risk of being affected by flooding events.
+> **⚠️ Nota técnica — Vigencia de la banda `QA60` según el rango de fechas**
+> - **Antes del 25 de enero de 2022:** `QA60` funciona normalmente.
+> - **Entre el 25 de enero de 2022 y el 28 de febrero de 2024:** la banda `QA60` estuvo vacía (siempre en 0, "sin nubes"), incluso en escenas totalmente nubladas. Esto no genera un error de código, sino resultados incorrectos.
+> - **Desde el 28 de febrero de 2024:** Google reconstruyó `QA60` de forma retroactiva a partir de otra banda (`MSK_CLASSI`), por lo que volvió a ser confiable para todo el historial de datos.
+>
+> **Recomendación:** para nuevos análisis, especialmente si trabaja con fechas recientes o no está seguro del rango temporal, considerar usar el dataset [`COPERNICUS/S2_CLOUD_PROBABILITY`](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_CLOUD_PROBABILITY) (basado en el algoritmo *s2cloudless*) en lugar de `QA60`, ya que es más robusto y no depende de estos cambios de procesamiento histórico de ESA.
 
-1. Open up the `pr-elev-analysis` project in QGIS if it is not already open.
-2. You should have the same layers loaded into the project as in **Exercise 3.1** and **3.2**.
-3. Go to `Layer > Add Layer > Add Raster Layer...` and select the `pr-population-2018.tif` file in the `intro-gis-data` folder. Press `Add` and close the window.
-4. Check the projection and reproject the layer to `EPSG:32620` if necessary.
-5. Now click on `Processing > Toolbox` to open the Toolbox panel. Search for `Zonal Statistics` and double-click on the name to open it. The tool should be listed under the `Raster analysis` category.
-6. Set the following parameters:
-    1. **Input layer:** `pr-flood-extent`
-    2. **Raster layer:** `pr-population-2018-reproj`
-    3. **Raster band:** This field should auto populate. Leave it as is.
-    4. **Statistics to calculate:** Click the `...` next to the statistics field and check only the `Sum` option. Press `OK` to return to the parameters window.
-7. Next to the zonal statistics field, press `...` and save the file in `intro-gis-data/outputs` as `pr-total-pop-flood-risk`.
-8. Click `Run` and close the window. Save the project.
-9. A new layer called `pr-total-pop-flood-risk` should appear. I will look the same as the `pr-flood-extent` layer, but it contains more information in the attribute table. Right-click on the layer name and select `Open Attribute Table`.
-10. Scroll to the right to view the last column in the table `_sum`. This number is the total number of people who live in flood risk zones, or about `651,000` people.
+### OPCIONAL: Verificar que las imágenes contengan la banda `QA60`
+Antes de aplicar la función de enmascaramiento, filtrar la colección para conservar únicamente las imágenes que efectivamente contienen la banda `QA60`, usando `ee.Filter.listContains()`.
 
-That’s quite a few people! If you wanted to know the number of people for each river feature, you could run the same operation on the non-dissolved buffer layer. 
+```javascript
+s2filtrado = s2filtrado.filter(
+  ee.Filter.listContains('system:band_names', 'QA60')
+);
+```
 
-### Challenge: Calculate percentage of national population at risk for flooding.
-See if you can take the analysis one step further – you know the number of people who live within flood risk zones, but what percentage of the population is that? Knowing that value could aid in resource allocation or population relocation. Calculate the percentage of the national population that falls within our defined flood risk zones. 
-* *Hint 1: Calculate the total country population and join it to the layer from Exercise 3.3*
-* *Hint 2: The tools `Join attributes by field value` and the `Field calculator` will be useful in this exercise.*
+### Paso 3: Preprocesamiento de series temporales (Enmascaramiento de nubes y cálculo de índices)
 
-**Congratulations!** You completed the Introduction to GIS workshop. You can refer back to this material anytime you want throughout the learning series, and don’t forget to reach out with feedback or questions!
+### Crear la función de enmascaramiento de nubes (QA60)
+La banda de calidad 'QA60' proporciona información sobre la ocurrencia de nubes y otros aspectos de calidad de imagen.
+La información se almacena en bits y usamos la función 'bitWiseAnd'para extraerlo.
+
+
+```javascript
+function mascaraNubesS2(imagen) {
+  var qa = imagen.select('QA60');
+
+  var bitmaskNubes = 1 << 10;
+  var bitmaskCirrus = 1 << 11;
+
+  var mascara = qa.bitwiseAnd(bitmaskNubes).eq(0)
+      .and(qa.bitwiseAnd(bitmaskCirrus).eq(0));
+  
+  var bandas = imagen.select('B.').divide(10000);
+  
+  return imagen.addBands(bandas, null, true).updateMask(mascara);
+}
+```
+
+
+### Funcion para calcular índices
+NDVI: (NIR-Red)/(NIR+Red)
+LSWI: (NIR-SWIR1)/(NIR+SWIR1)
+NDMI: (SWIR2-Red)/(SWIR2+Red)
+Utilizamos la función de GEE 'normalizedDifference'
+
+```javascript
+function calcularIndices(imagen){
+  var ndvi = imagen.normalizedDifference(['B8', 'B4']).rename('ndvi');
+  var lswi = imagen.normalizedDifference(['B8', 'B11']).rename('lswi');
+  var ndmi = imagen.normalizedDifference(['B12', 'B3']).rename('ndmi');
+  var mndwi = imagen.normalizedDifference(['B3', 'B11']).rename('mndwi');
+  
+  return ee.Image.cat([imagen, ndvi, lswi, ndmi, mndwi]);
+}
+```
+
+Aplicar funciones de pre procesamiento a las imágenes en la colección.
+```javascript
+var s2preProcesado = s2filtrado.map(mascaraNubesS2)
+                               .map(calcularIndices);
+
+print(s2preProcesado.first());
+```
+
+### Paso 4: Visualizar las primeras imágenes no procesadas y preprocesadas
+```javascript
+var primeraNoProcesada = s2filtrado.first();
+
+var paramVisNoProcesada = {
+  bands: ['B4', 'B3', 'B2'],
+  min: -100,
+  max: 1800
+};
+
+Map.addLayer(primeraNoProcesada, 
+             paramVisNoProcesada, 
+             'Primera Imagen No Procesada');
+
+var primeraPreProcesada = s2preProcesado.first();
+
+var paramVisPreProcesada = {
+  bands: ['B4', 'B3', 'B2'],
+  min: 0.0,
+  max: 0.18
+};
+
+Map.addLayer(primeraPreProcesada, 
+             paramVisPreProcesada, 
+             'Primera Imagen Preprocesada');
+```
+
+### Paso5: Crear una composición
+Utilizar las siguientes funciones para comparar diferentes agregaciones:.min(); .max(); .mean(); .median()
+
+```javascript
+var composicion = s2preProcesado.median().clip(area);
+Map.addLayer(composicion, paramVisPreProcesada, 'Composición Preprocesada');
+```
+
+### Generar un mosaico de calidad basado en la imagen más reciente
+```javascript
+var mosaicoMasReciente = s2preProcesado.map(function(imagen) {
+  return imagen.addBands(
+    ee.Image(ee.Number(imagen.get('system:time_start')))
+    .rename('tiempo')).toFloat();
+  
+}).qualityMosaic('tiempo');
+
+Map.addLayer(mosaicoMasReciente, paramVisPreProcesada, 'Mosaico Más Reciente');
+```
+
+### Paso 6: Exportar la composición a Google Drive y GEE Asset
+
+
+```javascript
+Export.image.toDrive({
+  image: composicion.toFloat(),
+  description: 'composicionMedianaSentinel2_1921',
+  fileNamePrefix: 'composicionMedianaSentinel2_1921',
+  region: area,
+  scale: 10,
+  maxPixels: 1e13
+});
+```
+Exportar a GEE Asset
+
+```javascript
+Export.image.toAsset({
+  image: composicion,
+  description: 'composicionMedianaSentinel2_1921',
+  assetId: 'projects/caribbean-trainings/assets/dominican-republic-2022/images/composicionMedianaSentinel2_1921',
+  region: area,
+  scale: 10,
+  maxPixels: 1e13
+});
+
+> **Nota técnica:** Recuerda actualizar el `assetId` con la ruta de tu propio proyecto de Earth Engine antes de ejecutar la exportación.
+
+**Paso 13: Ejecutar las exportaciones**
+
+Ir al panel `Tasks` y presionar `Run` sobre cada tarea de exportación generada.

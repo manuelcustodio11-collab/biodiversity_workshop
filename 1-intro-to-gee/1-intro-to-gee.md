@@ -82,4 +82,4 @@ El menú de la izquierda consta de tres pestañas: `Scripts`, `Docs`, `Assets`: 
 
 
 ## Nota: 
-El contenido de esta sesión ha sido adaptada o tomada del libro EEFA, capítulo F1, https://www.eefabook.org/
+El contenido de esta sesión ha sido adaptada o tomada del libro EEFA, capítulo F1, [https://www.eefabook.org/](https://www.eefabook.org/)
