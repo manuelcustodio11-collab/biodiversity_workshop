@@ -5,6 +5,36 @@ parent: "Introducción a GEE"
 nav_order: 5
 ---
 
+# 04_Área_GlobalEcosystemTypology
+## Objetivo
+1. Definir un área de interés (Parque Nacional / área protegida).
+2. Calcular el área de cada tipo de ecosistema interceptado con el área de interés, usando el mapa global de la IUCN.
+3. Comparar los resultados con el mapa nacional de ecosistemas de Colombia.
+
+## Datos
+- Áreas protegidas (WDPA), collection: `WCMC/WDPA/current/polygons`
+<p align="center">
+  <img src="{{ '/images/intro-gee/fig14.png' | relative_url }}" width="600" style="margin: 10px 0;">
+</p>
+
+- Tipología Global de Ecosistemas (IUCN), collection: `IUCN/GlobalEcosystemTypology/current`
+
+<p align="center">
+  <img src="{{ '/images/intro-gee/fig13.png' | relative_url }}" width="600" style="margin: 10px 0;">
+</p>
+
+- Mapa de ecosistemas de Colombia (asset del proyecto), collection: `projects/ee-paulapaz1101/assets/biodiversity_workshop/GEODATA/ecosystem_map_COL`
+
+## Método
+1. Intersección de geometrías con `.intersection()` para recortar cada ecosistema al límite exacto del área protegida.
+2. Cálculo de área con `.area()`, convertida de m² a hectáreas.
+3. Agrupación y suma de áreas por categoría de ecosistema usando `reduceColumns()` con `ee.Reducer.sum().group()`.
+
+## Paso a paso
+
+### Paso 1: Definir el área de interés
+
+
 # Making a Map with Vector Data
 In this module, you will create a basic map which will be used later as a basis for further demonstrations of QGIS functionality.
 
