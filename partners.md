@@ -16,7 +16,7 @@ nav_order: 4
 <p align="center">
   <img src="images/wilpa.png" width="600" style="margin: 10px 0;">
 </p>
-List the partner organizations for each workshop here.
+
 
 <!-- ## Partner Organization 1 -->
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Introducción a Embedding"
+title: "2-Introducción a Embedding"
 permalink: /ecosystems-changes
 has_children: true
 nav_order: 2
