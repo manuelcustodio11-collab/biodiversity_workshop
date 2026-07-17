@@ -13,6 +13,7 @@ nav_order: 3
 
 ## Datos
 - Límites administrativos, nivel pais (level0) FAO, collection: `FAO/GAUL/2015/level0`
+- Imágenes Landsat 8 Collection 2, Nivel 2, collection: `LANDSAT/LC08/C02/T1_L2`
 <p align="center">
   <img src="images/intro-gee/fig11.png" width="600" style="margin: 10px 0;">
 </p>
