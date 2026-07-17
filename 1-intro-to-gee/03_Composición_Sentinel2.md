@@ -200,7 +200,7 @@ Export.image.toAsset({
 
 > **Nota técnica:** Recuerda actualizar el `assetId` con la ruta de tu propio proyecto de Earth Engine antes de ejecutar la exportación.
 
-**Paso 13: Ejecutar las exportaciones**
+**Ejecutar las exportaciones**
 
 Ir al panel `Tasks` y presionar `Run` sobre cada tarea de exportación generada.
 
