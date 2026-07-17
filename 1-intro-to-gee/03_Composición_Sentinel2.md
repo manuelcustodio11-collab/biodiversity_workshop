@@ -80,9 +80,9 @@ s2filtrado = s2filtrado.filter(
 
 ### Paso 3: Preprocesamiento de series temporales (Enmascaramiento de nubes y cálculo de índices)
 
-### Crear la función de enmascaramiento de nubes (QA60)
-La banda de calidad 'QA60' proporciona información sobre la ocurrencia de nubes y otros aspectos de calidad de imagen.
-La información se almacena en bits y usamos la función 'bitWiseAnd'para extraerlo.
+### Crear la función de enmascaramiento de nubes (`QA60`)
+La banda de calidad `QA60` proporciona información sobre la ocurrencia de nubes y otros aspectos de calidad de imagen.
+La información se almacena en bits y usamos la función `bitWiseAnd` para extraerlo.
 
 
 ```javascript
@@ -112,7 +112,7 @@ NDMI: (SWIR2-Red)/(SWIR2+Red) -->
 | **LSWI** | (NIR − SWIR1) / (NIR + SWIR1) |
 | **NDMI** | (SWIR2 − Red) / (SWIR2 + Red) |
 
-Utilizamos la función de GEE 'normalizedDifference'
+Utilizamos la función de GEE `normalizedDifference`
 
 ```javascript
 function calcularIndices(imagen){
@@ -161,7 +161,7 @@ Map.addLayer(primeraPreProcesada,
 ```
 
 ### Paso5: Crear una composición
-Utilizar las siguientes funciones para comparar diferentes agregaciones:.min(); .max(); .mean(); .median()
+Utilizar las siguientes funciones para comparar diferentes agregaciones:`.min()`; `.max()`; `.mean()`; `.median()`
 
 ```javascript
 var composicion = s2preProcesado.median().clip(area);
@@ -182,7 +182,7 @@ Map.addLayer(mosaicoMasReciente, paramVisPreProcesada, 'Mosaico Más Reciente');
 
 ### Paso 6: Exportar la composición a Google Drive y GEE Asset
 
-
+Exportar a Google Drive.
 ```javascript
 Exportar para Google Drive.
 Export.image.toDrive({
@@ -194,7 +194,7 @@ Export.image.toDrive({
   maxPixels: 1e13
 });
 
-// Exportar como un GEE Asset.
+Exportar como un GEE Asset.
 Export.image.toAsset({
   image: composicion,
   description: 'composicionMedianaSentinel2_1921',
