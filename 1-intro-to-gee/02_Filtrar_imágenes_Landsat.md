@@ -13,14 +13,14 @@ nav_order: 3
 
 ## Datos
 - Límites administrativos, nivel pais (level0) FAO, collection: `FAO/GAUL/2015/level0`
+  <p align="center">
+  <img src="{{ '/images/intro-gee/fig11.png' | relative_url }}" width="400" style="margin: 10px 0;">
+</p>
 - Imágenes Landsat 8 Collection 2, Nivel 2, collection: `LANDSAT/LC08/C02/T1_L2`
 <p align="center">
-  <img src="images/intro-gee/fig11.png" width="600" style="margin: 10px 0;">
+  <img src="{{ '/images/intro-gee/fig9.png' | relative_url }}" width="400" style="margin: 10px 0;">
 </p>
-- Imágenes Landsat8 Collection 2, Nivel 2, collection: `LANDSAT/LC08/C02/T1_L2`
-<p align="center">
-  <img src="images/intro-gee/fig9.png" width="600" style="margin: 10px 0;">
-</p>
+
 ## Método
 - Emplear función `.where()`
 - Uso de operadores de comparación `.gt()` (greater than, "mayor que"), `.lt()` (menor que), o `.eq()` (igual a).
